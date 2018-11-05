@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Bridges between GraphQL and RDF</title>
+  <link rel="stylesheet" media="screen" href="styles/screen.css" />
+  <link rel="stylesheet" media="print"  href="styles/print.css" />
+  
+</head>
+<body prefix="cc: https://creativecommons.org/ns# rdfs: http://www.w3.org/2000/01/rdf-schema#">
+  <header>
+  <h1 id="bridges-between-graphql-and-rdf">Bridges between GraphQL and RDF</h1>
+
+  <ul id="authors">
+    <li><a href="http://www.rubensworks.net/" typeof="http://xmlns.com/foaf/0.1/Person" resource="http://www.rubensworks.net/#me">Ruben Taelman</a></li>
+  </ul>
+
+  <ul id="affiliations">
+    <li id="idlab">IDLab,
+          Department of Electronics and Information Systems,
+          Ghent University – imec</li>
+  </ul>
+
+  <section class="context">
+    <h2 id="in-reply-to">In reply to</h2>
+    <ul>
+      <li><a href="https://www.w3.org/Data/events/data-ws-2019/cfp.html" rel="as:inReplyTo">W3C Workshop on Web Standardization for Graph Data: Call for Participation</a></li>
+    </ul>
+  </section>
+
+  <p><br /></p>
+  <section id="abstract">
+    <h2>Abstract</h2>
+    <!-- Context      -->
+    <p>GraphQL offers a highly popular query languages for graphs,
+which is well known among Web developers.
+Each GraphQL data graph is scoped within an interface-specific schema,
+which makes it difficult to integrate data from multiple interfaces.
+The RDF graph model, on the other hand, offers a solution to this integration problem.
+<!-- Need         -->
+Different techniques are possible
+to enable querying over RDF graphs using GraphQL queries.
+<!-- Task         -->
+<!-- Object       -->
+In this position statement,
+we provide a high-level overview of the existing techniques,
+and how they differ.
+<!-- Findings     -->
+<!-- Conclusion   -->
+We argue that each of these techniques have their merits,
+but standardization is essential to simplify the link between GraphQL and RDF.
+<!-- Perspectives --></p>
+
+  </section>
+
+</header>
+
+<main>
+  <section id="introduction">
+    <h2>Introduction</h2>
+
+    <p>This is a position statement for participation to the
+<a href="https://www.w3.org/Data/events/data-ws-2019/" class="mandatory" data-link-text="https:/​/​www.w3.org/​Data/​events/​data-​ws-​2019/​">W3C Workshop on Web Standardization for Graph Data 2019</a>.
+This position statement lies within the topic of graph query languages,
+and focuses on the <a property="schema:citation http://purl.org/spar/cito/cites" href="http://facebook.github.io/graphql/October2016/">GraphQL</a> <span class="references">[<a href="#ref-1">1</a>]</span> query language, and its link to the <a property="schema:citation http://purl.org/spar/cito/cites" href="https://www.w3.org/TR/2014/REC-rdf11-concepts-20140225/">RDF</a> <span class="references">[<a href="#ref-2">2</a>]</span> data model.
+The reason for focussing on GraphQL is because it is highly popular among Web developers,
+which will significantly lower the barrier towards adopting a technique to use it for querying RDF.</p>
+
+    <p>In the next section, we will list existing techniques for using GraphQL to query RDF data.
+After that, we conclude with a proposal on a way forward to harmonize these approaches,
+which we hope to discuss during the workshop.</p>
+
+  </section>
+
+  <section id="existing-approaches">
+    <h2>Existing Approaches</h2>
+
+    <p>To the best of our knowledge, four solutions exist for querying RDF via GraphQL queries:</p>
+
+    <ul>
+      <li><a property="schema:citation http://purl.org/spar/cito/citesAsAuthority" href="http://hypergraphql.org/">HyperGraphQL</a> <span class="references">[<a href="#ref-3">3</a>]</span></li>
+      <li><a property="schema:citation http://purl.org/spar/cito/citesAsAuthority" href="https://www.topquadrant.com/products/topbraid-enterprise-data-governance/">TopBraid</a> <span class="references">[<a href="#ref-4">4</a>]</span></li>
+      <li><a property="schema:citation http://purl.org/spar/cito/citesAsAuthority" href="https://www.stardog.com/">Stardog</a> <span class="references">[<a href="#ref-5">5</a>]</span></li>
+      <li><a property="schema:citation http://purl.org/spar/cito/citesAsAuthority" href="https://comunica.github.io/Article-ISWC2018-Demo-GraphQlLD/">GraphQL-LD</a> <span class="references">[<a href="#ref-6">6</a>]</span></li>
+    </ul>
+
+    <p>The key properties of these solutions will be discussed hereafter.</p>
+
+    <h3 id="hypergraphql">HyperGraphQL</h3>
+
+    <p><a property="schema:citation http://purl.org/spar/cito/citesAsAuthority" href="http://hypergraphql.org/">HyperGraphQL</a> <span class="references">[<a href="#ref-3">3</a>]</span> is a GraphQL interface wrapper around RDF sources.
+The main goal of this system is to support federated querying
+over multiple RDF sources and make it accessible through a single interface.</p>
+
+    <p>Each HyperGraphQL instance uses a configuration file and an <em>annotated</em> GraphQL schema.
+The configuration file is used to define the RDF services to fetch data from.
+The annotated GraphQL schema is a GraphQL schema that is annotated with GraphQL directives
+that indicate for each type and argument in which RDF service the type can be fetched,
+and what their full URI is.</p>
+
+    <p>Users can send plain GraphQL queries to an HyperGraphQL instance,
+and the instance will reply with a GraphQL response that is enhanced with a <a property="schema:citation http://purl.org/spar/cito/citesAsAuthority" href="https://www.w3.org/TR/json-ld/">JSON-LD context</a> <span class="references">[<a href="#ref-7">7</a>]</span>.
+This implicitly transforms the GraphQL response into RDF.
+Optionally, the server provides different content types to convert the response into alternative RDF serializations.</p>
+
+    <h3 id="topbraid">TopBraid</h3>
+
+    <p><a property="schema:citation http://purl.org/spar/cito/citesAsAuthority" href="https://www.topquadrant.com/products/topbraid-enterprise-data-governance/">TopBraid</a> <span class="references">[<a href="#ref-4">4</a>]</span> is a set of semantic data governance tools.
+In a recent release, GraphQL was added as a way to query the stored RDF.</p>
+
+    <p>TopBraid’s approach is similar to HyperGraphQL.
+It also uses GraphQL schemas to expose a GraphQL interface over RDF sources.
+TopBraid’s schemas are automatically generated based on data shape definitions,
+which can be defined using <a property="schema:citation http://purl.org/spar/cito/citesAsAuthority" href="https://www.w3.org/TR/2017/REC-shacl-20170720/">SHACL</a> <span class="references">[<a href="#ref-8">8</a>]</span>.</p>
+
+    <p>These schemas are more expressive than HyperGraphQL’s schema,
+as it supports things like SHACL-based constraint filters, full-text-search, aggregations, ordering and field transformations.
+These features are defined via custom query functions in the schema.
+In constrast with HyperGraphQL, TopBraid attaches no JSON-LD context to its GraphQL query responses.</p>
+
+    <h3 id="stardog">Stardog</h3>
+
+    <p><a property="schema:citation http://purl.org/spar/cito/citesAsAuthority" href="https://www.stardog.com/">Stardog</a> <span class="references">[<a href="#ref-5">5</a>]</span> is a commercial graph store that recently
+(as of release 5.3.3) adds GraphQL query support.</p>
+
+    <p>Stardog makes GraphQL schemas optional for querying RDF using GraphQL.
+If no schema is used, then GraphQL term to RDF conversion will be done using the default namespace in that graph,
+but this can be overridden by using the <code>@prefix</code> directive inside GraphQL queries.</p>
+
+    <p>Stardog assumes that the top-level node of any query is assumed to refer to a type.
+Any deeper query nodes refer to predicate links from the parent node.</p>
+
+    <p>Stardog also adds several features to the GraphQL query side.
+Compared to TopBraid, Stardog uses <em>directives</em> for this, instead of dedicated arguments.
+It adds support for functionality such as filters and bindings.</p>
+
+    <p>Just like TopBraid, no JSON-LD context is attached to its GraphQL query responses.</p>
+
+    <h3 id="graphql-ld">GraphQL-LD</h3>
+
+    <p>Finally, <a property="schema:citation http://purl.org/spar/cito/citesAsAuthority" href="https://comunica.github.io/Article-ISWC2018-Demo-GraphQlLD/">GraphQL-LD</a> <span class="references">[<a href="#ref-6">6</a>]</span> is an approach
+that is able to convert GraphQL queries to <a property="schema:citation http://purl.org/spar/cito/cites" href="https://www.w3.org/TR/2013/REC-sparql11-query-20130321/">SPARQL</a> <span class="references">[<a href="#ref-9">9</a>]</span>,
+and SPARQL results to the corresponding GraphQL query results,
+independent of a query engine.
+Compared to the previously explained approaches, it does not use the GraphQL schema at all,
+but exploits <a property="schema:citation http://purl.org/spar/cito/cites" href="https://www.w3.org/TR/json-ld/">JSON-LD contexts</a> <span class="references">[<a href="#ref-7">7</a>]</span> to handle the conversion of GraphQL terms to RDF terms.
+This offers a separation of concerns where developers can use simple GraphQL queries,
+and domain experts can offer the JSON-LD context which <em>semantifies</em> these queries.</p>
+
+    <p>GraphQL-LD also supports custom features such as filtering and ordering through directives.</p>
+
+    <p>GraphQL query responses in this approach are plain JSON objects,
+and are compatible with the user-provided JSON-LD context.
+As such, responses are usable as both JSON as RDF.</p>
+
+  </section>
+
+  <section id="conclusions">
+    <h2>Conclusions</h2>
+
+    <p>In the previous section, we provided an overview of four approaches for querying RDF with GraphQL queries.
+These approaches are significantly different and mostly incompatible with each other.
+As such, one GraphQL query that works for one approach
+will most likely not work in the other approaches,
+or it can have different semantics.</p>
+
+    <p>Therefore, it is important to achieve a better understanding of the different ways of querying RDF with GraphQL.
+Ideally, and if possible, a consensus should reached on a single <em>good way</em>.
+In order to do this, we propose the following plan of action:</p>
+
+    <ol>
+      <li>Determine the different aspects of querying RDF with GraphQL.</li>
+      <li>Decompose and categorize the methods of the existing approaches in these aspects.</li>
+      <li>Determine the advantages and disadvantages of each method within each aspect.</li>
+      <li>Propose a standard approach and semantics for querying RDF with GraphQL.</li>
+    </ol>
+
+    <p>Clarifying the differences and a path to unification will
+lower the barrier for developers that have knowledge on GraphQL to start querying RDF.</p>
+
+  </section>
+
+</main>
+
+<footer>
+    <section id="biography">
+    <h2>Biography</h2>
+
+    <p class="biography"><strong>Ruben Taelman</strong> is a PhD student at IDLab, Ghent University – imec, Belgium.
+His research concerns the server and client trade-offs for Linked Data publication and querying,
+and has experience with RDF development in JavaScript
+such as implementing a <a href="https://github.com/comunica/comunica" class="mandatory" data-link-text="https:/​/​github.com/​comunica/​comunica">graph-based query engine</a>.</p>
+
+  </section>
+
+<section id="references">
+<h2>References</h2>
+<dl class="references">
+  <dt id="ref-1">[1]</dt>
+  <dd resource="http://facebook.github.io/graphql/October2016/" typeof="schema:CreativeWork">Facebook, I.: GraphQL. Working Draft, Oct. 2016. <a href="http://facebook.github.io/graphql/October2016/">http:/​/​facebook.github.io/graphql/October2016/</a></dd>
+  <dt id="ref-2">[2]</dt>
+  <dd resource="https://www.w3.org/TR/2014/REC-rdf11-concepts-20140225/" typeof="schema:CreativeWork">Cyganiak, R., Wood, D., Lanthaler, M.: RDF 1.1: Concepts and Abstract Syntax. W3C, <a href="https://www.w3.org/TR/2014/REC-rdf11-concepts-20140225/">https:/​/​www.w3.org/TR/2014/REC-rdf11-concepts-20140225/</a> (2014).</dd>
+  <dt id="ref-3">[3]</dt>
+  <dd resource="http://hypergraphql.org/" typeof="schema:CreativeWork">Semantic Integration Ltd.: HyperGraphQL. <a href="http://hypergraphql.org/">http:/​/​hypergraphql.org/</a></dd>
+  <dt id="ref-4">[4]</dt>
+  <dd resource="https://www.topquadrant.com/products/topbraid-enterprise-data-governance/" typeof="schema:CreativeWork">TopQuadrant: TopBraid Enterprise Data Governance. <a href="https://www.topquadrant.com/products/topbraid-enterprise-data-governance/">https:/​/​www.topquadrant.com/products/topbraid-enterprise-data-governance/</a></dd>
+  <dt id="ref-5">[5]</dt>
+  <dd resource="https://www.stardog.com/" typeof="schema:CreativeWork">Stardog Union: The Knowledge Graph Platform for the Enterprise. <a href="https://www.stardog.com/">https:/​/​www.stardog.com/</a></dd>
+  <dt id="ref-6">[6]</dt>
+  <dd resource="https://comunica.github.io/Article-ISWC2018-Demo-GraphQlLD/" typeof="schema:Article">Taelman, R., Vander Sande, M., Verborgh, R.: GraphQL-LD: Linked Data Querying with GraphQL. In: Proceedings of the 17th International Semantic Web Conference: Posters and Demos (2018).</dd>
+  <dt id="ref-7">[7]</dt>
+  <dd resource="https://www.w3.org/TR/json-ld/" typeof="schema:Article">Consortium, W.W.W., others: JSON-LD 1.0: a JSON-based serialization for linked data. (2014).</dd>
+  <dt id="ref-8">[8]</dt>
+  <dd resource="https://www.w3.org/TR/2017/REC-shacl-20170720/" typeof="schema:CreativeWork">Knublauch, H., Kontokostas, D.: Shapes Constraint Language (SHACL). W3C, <a href="https://www.w3.org/TR/2017/REC-shacl-20170720/">https:/​/​www.w3.org/TR/2017/REC-shacl-20170720/</a> (2017).</dd>
+  <dt id="ref-9">[9]</dt>
+  <dd resource="https://www.w3.org/TR/2013/REC-sparql11-query-20130321/" typeof="schema:CreativeWork">Harris, S., Seaborne, A., Prud’hommeaux, E.: SPARQL 1.1 Query Language. W3C, <a href="https://www.w3.org/TR/2013/REC-sparql11-query-20130321/">https:/​/​www.w3.org/TR/2013/REC-sparql11-query-20130321/</a> (2013).</dd>
+</dl>
+</section>
+</footer>
+
+
+
+</body about="" prefix="rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns# rdfs: http://www.w3.org/2000/01/rdf-schema# owl: http://www.w3.org/2002/07/owl# xsd: http://www.w3.org/2001/XMLSchema# dcterms: http://purl.org/dc/terms/ dctypes: http://purl.org/dc/dcmitype/ foaf: http://xmlns.com/foaf/0.1/ v: http://www.w3.org/2006/vcard/ns# pimspace: http://www.w3.org/ns/pim/space# cc: https://creativecommons.org/ns# skos: http://www.w3.org/2004/02/skos/core# prov: http://www.w3.org/ns/prov# qb: http://purl.org/linked-data/cube# schema: http://schema.org/ void: http://rdfs.org/ns/void# rsa: http://www.w3.org/ns/auth/rsa# cert: http://www.w3.org/ns/auth/cert# cal: http://www.w3.org/2002/12/cal/ical# wgs: http://www.w3.org/2003/01/geo/wgs84_pos# org: http://www.w3.org/ns/org# biblio: http://purl.org/net/biblio# bibo: http://purl.org/ontology/bibo/ book: http://purl.org/NET/book/vocab# ov: http://open.vocab.org/terms/ sioc: http://rdfs.org/sioc/ns# doap: http://usefulinc.com/ns/doap# dbr: http://dbpedia.org/resource/ dbp: http://dbpedia.org/property/ sio: http://semanticscience.org/resource/ opmw: http://www.opmw.org/ontology/ deo: http://purl.org/spar/deo/ doco: http://purl.org/spar/doco/ cito: http://purl.org/spar/cito/ fabio: http://purl.org/spar/fabio/ oa: http://www.w3.org/ns/oa# as: https://www.w3.org/ns/activitystreams# ldp: http://www.w3.org/ns/ldp# solid: http://www.w3.org/ns/solid/terms# acl: http://www.w3.org/ns/auth/acl# dio: https://w3id.org/dio#" typeof="schema:CreativeWork sioc:Post prov:Entity">
+</html>
