@@ -1,10 +1,11 @@
 ## Introduction
 {:#introduction}
 
-This is a great article on the [Semantic Web](cite:cites semanticweb), written in Markdown.
+This is a position statement for participation in the 2019
+[W3C Workshop on Web Standardization for Graph Data](https://www.w3.org/Data/events/data-ws-2019/){.mandatory}.
+This position statement lies within the topic of graph query languages,
+and focuses on the [GraphQL](cite:cites graphql) query language, and its link to the [RDF](cite:cites spec:rdf) data model.
 
-Make sure to [write your document effectively](http://www.treesmapsandtheorems.com/pdfs/TM&Th-2.0-summary.pdf)!
-
-Write proper introduction.
-More information on snippets like this can be found on the [ScholarMarkdown wiki](https://github.com/rubensworks/ScholarMarkdown/wiki/Snippets).
-{:.todo}
+In the next section, we will list existing techniques for using GraphQL to query RDF data.
+After that, we propose a way forward on harmonizing these approaches,
+which we hope to discuss during the workshop.
