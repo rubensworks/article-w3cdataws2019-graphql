@@ -2,13 +2,13 @@
 {:#conclusions}
 
 In the previous section, we provided an overview of four approaches for querying RDF with GraphQL queries.
-They are significantly different and mostly incompatible with each other.
+These approaches are significantly different and mostly incompatible with each other.
 As such, one GraphQL query that works for one approach
 will most likely not work in the other approaches,
 or it can have different semantics.
 
-Therefore, it is important to achieve a better understanding of the different ways of querying RDF with GraphQL,
-and perhaps even a consensus to be reached on a single _good way_.
+Therefore, it is important to achieve a better understanding of the different ways of querying RDF with GraphQL.
+Ideally, and if possible, a consensus should reached on a single _good way_.
 In order to do this, we propose the following plan of action:
 
 1. Determine the different aspects of querying RDF with GraphQL.
