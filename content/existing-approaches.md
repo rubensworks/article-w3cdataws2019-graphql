@@ -40,7 +40,7 @@ which can be defined using [SHACL](cite:citesAsAuthority spec:shacl).
 These schemas are more expressive than HyperGraphQL's schema,
 as it supports things like SHACL-based constraint filters, full-text-search, aggregations, ordering and field transformations.
 These features are defined via custom query functions in the schema.
-In constrast with HyperGraphQL, TopBraid attaches no JSON-LD context to its GraphQL query responses.
+In contrast to HyperGraphQL, TopBraid attaches no JSON-LD context to its GraphQL query responses.
 
 ### Stardog
 
@@ -75,4 +75,4 @@ GraphQL-LD also supports custom features such as filtering and ordering through 
 
 GraphQL query responses in this approach are plain JSON objects,
 and are compatible with the user-provided JSON-LD context.
-As such, responses are usable as both JSON as RDF.
+As such, responses are usable as both JSON and RDF.

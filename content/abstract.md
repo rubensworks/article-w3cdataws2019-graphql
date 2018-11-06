@@ -4,10 +4,9 @@ GraphQL offers a highly popular query languages for graphs,
 which is well known among Web developers.
 Each GraphQL data graph is scoped within an interface-specific schema,
 which makes it difficult to integrate data from multiple interfaces.
-The RDF graph model, on the other hand, offers a solution to this integration problem.
+The RDF graph model offers a solution to this integration problem.
 <!-- Need         -->
-Different techniques are possible
-to enable querying over RDF graphs using GraphQL queries.
+Different techniques can enable querying over RDF graphs using GraphQL queries.
 <!-- Task         -->
 <!-- Object       -->
 In this position statement,
