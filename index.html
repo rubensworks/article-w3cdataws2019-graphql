@@ -36,10 +36,9 @@
 which is well known among Web developers.
 Each GraphQL data graph is scoped within an interface-specific schema,
 which makes it difficult to integrate data from multiple interfaces.
-The RDF graph model, on the other hand, offers a solution to this integration problem.
+The RDF graph model offers a solution to this integration problem.
 <!-- Need         -->
-Different techniques are possible
-to enable querying over RDF graphs using GraphQL queries.
+Different techniques can enable querying over RDF graphs using GraphQL queries.
 <!-- Task         -->
 <!-- Object       -->
 In this position statement,
@@ -63,7 +62,8 @@ but standardization is essential to simplify the link between GraphQL and RDF.
 <a href="https://www.w3.org/Data/events/data-ws-2019/" class="mandatory" data-link-text="https:/​/​www.w3.org/​Data/​events/​data-​ws-​2019/​">W3C Workshop on Web Standardization for Graph Data 2019</a>.
 This position statement lies within the topic of graph query languages,
 and focuses on the <a property="schema:citation http://purl.org/spar/cito/cites" href="http://facebook.github.io/graphql/October2016/">GraphQL</a> <span class="references">[<a href="#ref-1">1</a>]</span> query language, and its link to the <a property="schema:citation http://purl.org/spar/cito/cites" href="https://www.w3.org/TR/2014/REC-rdf11-concepts-20140225/">RDF</a> <span class="references">[<a href="#ref-2">2</a>]</span> data model.
-The reason for focussing on GraphQL is because it is highly popular among Web developers,
+<span class="comment" data-author="RV">I think the position should be strong, and that position should be: graph languages need to be able to query the Web! So they need meaning across data sources! But let’s use GraphQL, since it is great. So let’s add semantics. In a standardized way.</span>
+The reason for focusing on GraphQL is because it is highly popular among Web developers,
 which will significantly lower the barrier towards adopting a technique to use it for querying RDF.</p>
 
     <p>In the next section, we will list existing techniques for using GraphQL to query RDF data.
@@ -116,7 +116,7 @@ which can be defined using <a property="schema:citation http://purl.org/spar/cit
     <p>These schemas are more expressive than HyperGraphQL’s schema,
 as it supports things like SHACL-based constraint filters, full-text-search, aggregations, ordering and field transformations.
 These features are defined via custom query functions in the schema.
-In constrast with HyperGraphQL, TopBraid attaches no JSON-LD context to its GraphQL query responses.</p>
+In contrast to HyperGraphQL, TopBraid attaches no JSON-LD context to its GraphQL query responses.</p>
 
     <h3 id="stardog">Stardog</h3>
 
@@ -151,7 +151,7 @@ and domain experts can offer the JSON-LD context which <em>semantifies</em> thes
 
     <p>GraphQL query responses in this approach are plain JSON objects,
 and are compatible with the user-provided JSON-LD context.
-As such, responses are usable as both JSON as RDF.</p>
+As such, responses are usable as both JSON and RDF.</p>
 
   </section>
 
