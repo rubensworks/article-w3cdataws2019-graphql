@@ -66,6 +66,8 @@ Finally, [GraphQL-LD](cite:citesAsAuthority graphqlld) is an approach
 that is able to convert GraphQL queries to [SPARQL](cite:cites spec:sparqllang),
 and SPARQL results to the corresponding GraphQL query results,
 independent of a query engine.
+As an example, GraphQL-LD was implemented in the [Comunica engine](cite:cites comunica),
+and can be [tried out via a Web interface](https://gist.github.com/rubensworks/9d6eccce996317677d71944ed1087ea6){:.mandatory}.
 Compared to the previously explained approaches, it does not use the GraphQL schema at all,
 but exploits [JSON-LD contexts](cite:cites jsonld) to handle the conversion of GraphQL terms to RDF terms.
 This offers a separation of concerns where developers can use simple GraphQL queries,
