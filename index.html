@@ -12,7 +12,9 @@
   <h1 id="bridges-between-graphql-and-rdf">Bridges between GraphQL and RDF</h1>
 
   <ul id="authors">
-    <li><a href="http://www.rubensworks.net/" typeof="http://xmlns.com/foaf/0.1/Person" resource="http://www.rubensworks.net/#me">Ruben Taelman</a></li>
+    <li><a href="http://www.rubensworks.net/" typeof="http://xmlns.com/foaf/0.1/Person" resource="http://www.rubensworks.net/#me" id="idlab">Ruben Taelman</a></li>
+    <li><a href="#" typeof="http://xmlns.com/foaf/0.1/Person" resource="https://data.verborgh.org/people/miel_vander_sande" id="idlab">Miel Vander Sande</a></li>
+    <li><a href="https://ruben.verborgh.org/" typeof="http://xmlns.com/foaf/0.1/Person" resource="https://ruben.verborgh.org/profile/#me" id="idlab">Ruben Verborgh</a></li>
   </ul>
 
   <ul id="affiliations">
@@ -142,6 +144,8 @@ It adds support for functionality such as filters and bindings.</p>
 that is able to convert GraphQL queries to <a property="schema:citation http://purl.org/spar/cito/cites" href="https://www.w3.org/TR/2013/REC-sparql11-query-20130321/">SPARQL</a> <span class="references">[<a href="#ref-9">9</a>]</span>,
 and SPARQL results to the corresponding GraphQL query results,
 independent of a query engine.
+As an example, GraphQL-LD was implemented in the <a property="schema:citation http://purl.org/spar/cito/cites" href="https://comunica.github.io/Article-ISWC2018-Resource/">Comunica engine</a> <span class="references">[<a href="#ref-10">10</a>]</span>,
+and can be <a href="https://gist.github.com/rubensworks/9d6eccce996317677d71944ed1087ea6" class="mandatory" data-link-text="https:/​/​gist.github.com/​rubensworks/​9d6eccce996317677d71944ed1087ea6">tried out via a Web interface</a>.
 Compared to the previously explained approaches, it does not use the GraphQL schema at all,
 but exploits <a property="schema:citation http://purl.org/spar/cito/cites" href="https://www.w3.org/TR/json-ld/">JSON-LD contexts</a> <span class="references">[<a href="#ref-7">7</a>]</span> to handle the conversion of GraphQL terms to RDF terms.
 This offers a separation of concerns where developers can use simple GraphQL queries,
@@ -214,6 +218,8 @@ such as implementing a <a href="https://github.com/comunica/comunica" class="man
   <dd resource="https://www.w3.org/TR/2017/REC-shacl-20170720/" typeof="schema:CreativeWork">Knublauch, H., Kontokostas, D.: Shapes Constraint Language (SHACL). W3C, <a href="https://www.w3.org/TR/2017/REC-shacl-20170720/">https:/​/​www.w3.org/TR/2017/REC-shacl-20170720/</a> (2017).</dd>
   <dt id="ref-9">[9]</dt>
   <dd resource="https://www.w3.org/TR/2013/REC-sparql11-query-20130321/" typeof="schema:CreativeWork">Harris, S., Seaborne, A., Prud’hommeaux, E.: SPARQL 1.1 Query Language. W3C, <a href="https://www.w3.org/TR/2013/REC-sparql11-query-20130321/">https:/​/​www.w3.org/TR/2013/REC-sparql11-query-20130321/</a> (2013).</dd>
+  <dt id="ref-10">[10]</dt>
+  <dd resource="https://comunica.github.io/Article-ISWC2018-Resource/" typeof="schema:Article">Taelman, R., Van Herwegen, J., Vander Sande, M., Verborgh, R.: Comunica: a Modular SPARQL Query Engine for the Web. In: Proceedings of the 17th International Semantic Web Conference (2018).</dd>
 </dl>
 </section>
 </footer>
