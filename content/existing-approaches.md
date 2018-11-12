@@ -3,6 +3,10 @@
 
 To the best of our knowledge, four solutions exist for querying RDF via GraphQL queries:
 
+<span class="comment" data-author="MVS">
+For completeness, I'd add the maturity level + which solutions are enterprise and which onces are academic (also clarify that in the details, like with Stardog)
+</span>
+
 * [HyperGraphQL](cite:citesAsAuthority hypergraphql)
 * [TopBraid](cite:citesAsAuthority topbraid)
 * [Stardog](cite:citesAsAuthority stardog)
