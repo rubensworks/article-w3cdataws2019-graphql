@@ -3,20 +3,17 @@
 
 To the best of our knowledge, four solutions exist for querying RDF via GraphQL queries:
 
-<span class="comment" data-author="MVS">
-For completeness, I'd add the maturity level + which solutions are enterprise and which onces are academic (also clarify that in the details, like with Stardog)
-</span>
-
-* [HyperGraphQL](cite:citesAsAuthority hypergraphql)
-* [TopBraid](cite:citesAsAuthority topbraid)
-* [Stardog](cite:citesAsAuthority stardog)
-* [GraphQL-LD](cite:citesAsAuthority graphqlld)
+* [HyperGraphQL](cite:citesAsAuthority hypergraphql) (_enterprise_)
+* [TopBraid](cite:citesAsAuthority topbraid) (_enterprise_)
+* [Stardog](cite:citesAsAuthority stardog) (_enterprise_)
+* [GraphQL-LD](cite:citesAsAuthority graphqlld) (_academic_)
 
 The key properties of these solutions will be discussed hereafter.
 
 ### HyperGraphQL
 
-[HyperGraphQL](cite:citesAsAuthority hypergraphql) is a GraphQL interface wrapper around RDF sources.
+[HyperGraphQL](cite:citesAsAuthority hypergraphql) is an open-source GraphQL interface wrapper around RDF sources,
+maintained by Semantic Integration Ltd.
 The main goal of this system is to support federated querying
 over multiple RDF sources and make it accessible through a single interface.
 
@@ -33,7 +30,7 @@ Optionally, the server provides different content types to convert the response 
 
 ### TopBraid
 
-[TopBraid](cite:citesAsAuthority topbraid) is a set of semantic data governance tools.
+[TopBraid](cite:citesAsAuthority topbraid) is a commercial set of semantic data governance tools by TopQuadrant.
 In a recent release, GraphQL was added as a way to query the stored RDF.
 
 TopBraid's approach is similar to HyperGraphQL.
@@ -66,7 +63,7 @@ Just like TopBraid, no JSON-LD context is attached to its GraphQL query response
 
 ### GraphQL-LD
 
-Finally, [GraphQL-LD](cite:citesAsAuthority graphqlld) is an approach
+Finally, [GraphQL-LD](cite:citesAsAuthority graphqlld) is an academic approach
 that is able to convert GraphQL queries to [SPARQL](cite:cites spec:sparqllang),
 and SPARQL results to the corresponding GraphQL query results,
 independent of a query engine.
