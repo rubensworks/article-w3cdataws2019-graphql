@@ -80,22 +80,19 @@ which we hope to discuss during the workshop.</p>
 
     <p>To the best of our knowledge, four solutions exist for querying RDF via GraphQL queries:</p>
 
-    <p><span class="comment" data-author="MVS">
-For completeness, I’d add the maturity level + which solutions are enterprise and which onces are academic (also clarify that in the details, like with Stardog)
-</span></p>
-
     <ul>
-      <li><a property="schema:citation http://purl.org/spar/cito/citesAsAuthority" href="http://hypergraphql.org/">HyperGraphQL</a> <span class="references">[<a href="#ref-3">3</a>]</span></li>
-      <li><a property="schema:citation http://purl.org/spar/cito/citesAsAuthority" href="https://www.topquadrant.com/products/topbraid-enterprise-data-governance/">TopBraid</a> <span class="references">[<a href="#ref-4">4</a>]</span></li>
-      <li><a property="schema:citation http://purl.org/spar/cito/citesAsAuthority" href="https://www.stardog.com/">Stardog</a> <span class="references">[<a href="#ref-5">5</a>]</span></li>
-      <li><a property="schema:citation http://purl.org/spar/cito/citesAsAuthority" href="https://comunica.github.io/Article-ISWC2018-Demo-GraphQlLD/">GraphQL-LD</a> <span class="references">[<a href="#ref-6">6</a>]</span></li>
+      <li><a property="schema:citation http://purl.org/spar/cito/citesAsAuthority" href="http://hypergraphql.org/">HyperGraphQL</a> <span class="references">[<a href="#ref-3">3</a>]</span> (<em>enterprise</em>)</li>
+      <li><a property="schema:citation http://purl.org/spar/cito/citesAsAuthority" href="https://www.topquadrant.com/products/topbraid-enterprise-data-governance/">TopBraid</a> <span class="references">[<a href="#ref-4">4</a>]</span> (<em>enterprise</em>)</li>
+      <li><a property="schema:citation http://purl.org/spar/cito/citesAsAuthority" href="https://www.stardog.com/">Stardog</a> <span class="references">[<a href="#ref-5">5</a>]</span> (<em>enterprise</em>)</li>
+      <li><a property="schema:citation http://purl.org/spar/cito/citesAsAuthority" href="https://comunica.github.io/Article-ISWC2018-Demo-GraphQlLD/">GraphQL-LD</a> <span class="references">[<a href="#ref-6">6</a>]</span> (<em>academic</em>)</li>
     </ul>
 
     <p>The key properties of these solutions will be discussed hereafter.</p>
 
     <h3 id="hypergraphql">HyperGraphQL</h3>
 
-    <p><a property="schema:citation http://purl.org/spar/cito/citesAsAuthority" href="http://hypergraphql.org/">HyperGraphQL</a> <span class="references">[<a href="#ref-3">3</a>]</span> is a GraphQL interface wrapper around RDF sources.
+    <p><a property="schema:citation http://purl.org/spar/cito/citesAsAuthority" href="http://hypergraphql.org/">HyperGraphQL</a> <span class="references">[<a href="#ref-3">3</a>]</span> is an open-source GraphQL interface wrapper around RDF sources,
+maintained by Semantic Integration Ltd.
 The main goal of this system is to support federated querying
 over multiple RDF sources and make it accessible through a single interface.</p>
 
@@ -112,7 +109,7 @@ Optionally, the server provides different content types to convert the response 
 
     <h3 id="topbraid">TopBraid</h3>
 
-    <p><a property="schema:citation http://purl.org/spar/cito/citesAsAuthority" href="https://www.topquadrant.com/products/topbraid-enterprise-data-governance/">TopBraid</a> <span class="references">[<a href="#ref-4">4</a>]</span> is a set of semantic data governance tools.
+    <p><a property="schema:citation http://purl.org/spar/cito/citesAsAuthority" href="https://www.topquadrant.com/products/topbraid-enterprise-data-governance/">TopBraid</a> <span class="references">[<a href="#ref-4">4</a>]</span> is a commercial set of semantic data governance tools by TopQuadrant.
 In a recent release, GraphQL was added as a way to query the stored RDF.</p>
 
     <p>TopBraid’s approach is similar to HyperGraphQL.
@@ -145,7 +142,7 @@ It adds support for functionality such as filters and bindings.</p>
 
     <h3 id="graphql-ld">GraphQL-LD</h3>
 
-    <p>Finally, <a property="schema:citation http://purl.org/spar/cito/citesAsAuthority" href="https://comunica.github.io/Article-ISWC2018-Demo-GraphQlLD/">GraphQL-LD</a> <span class="references">[<a href="#ref-6">6</a>]</span> is an approach
+    <p>Finally, <a property="schema:citation http://purl.org/spar/cito/citesAsAuthority" href="https://comunica.github.io/Article-ISWC2018-Demo-GraphQlLD/">GraphQL-LD</a> <span class="references">[<a href="#ref-6">6</a>]</span> is an academic approach
 that is able to convert GraphQL queries to <a property="schema:citation http://purl.org/spar/cito/cites" href="https://www.w3.org/TR/2013/REC-sparql11-query-20130321/">SPARQL</a> <span class="references">[<a href="#ref-9">9</a>]</span>,
 and SPARQL results to the corresponding GraphQL query results,
 independent of a query engine.
@@ -174,24 +171,14 @@ will most likely not work in the other approaches,
 or it can have different semantics.</p>
 
     <p>Therefore, it is important to achieve a better understanding of the different ways of querying RDF with GraphQL.
-Ideally, and if possible, a consensus should reached on a single <em>good way</em>.</p>
-
-    <p><span class="comment" data-author="MVS">
-“Good” sounds a bit silly (nothing “good” comes out of standardization, only consensus ;p). I suggest “uniform”.
-</span></p>
+Ideally, and if possible, a consensus should reached on a single way.</p>
 
     <p>In order to do this, we propose the following plan of action:</p>
 
-    <p><span class="comment" data-author="MVS">
-You could make the four points a bit clearer. 
-“aspect” and “method” come across as vague, not sure what you mean by those exactly. 
-I’d add a bit more information to the sentences.
-</span></p>
-
     <ol>
-      <li>Determine the different aspects of querying RDF with GraphQL.</li>
-      <li>Decompose and categorize the methods of the existing approaches in these aspects.</li>
-      <li>Determine the advantages and disadvantages of each method within each aspect.</li>
+      <li>Determine the different methods of querying RDF with GraphQL.</li>
+      <li>Decompose and categorize the existing approaches in these methods.</li>
+      <li>Determine the advantages and disadvantages of each method.</li>
       <li>Propose a standard approach and semantics for querying RDF with GraphQL.</li>
     </ol>
 
